@@ -1,0 +1,19 @@
+version: "0.1"  # optional since v1.27.0
+services:
+  cloudflared:
+    container_name: cloudflared
+    image: artemiop/cloudflaredarm
+    ports: 8080:80
+#  web:
+#    build: .
+#    ports:
+#      - "8000:5000"
+#    volumes:
+#      - .:/code
+#      - logvolume01:/var/log
+#    links:
+#      - redis
+#  redis:
+#    image: redis
+#volumes:
+#  logvolume01#: {}
