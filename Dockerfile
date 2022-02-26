@@ -6,7 +6,7 @@ RUN chmod u+x cloudflared
 #ADD cert.pem /root/.cloudflare/cert.pem
 RUN mv ./cloudflared /usr/bin/cloudflared
 RUN cloudflared login
-RUN cloudflared delete docker
+RUN cloudflared tunnel delete docker
 RUN cloudflared tunnel create docker
 RUN touch /root/.cloudflared/config.yml
 RUN echo "tunnel: 896325bb-a683-4bf4-9b7b-ba7ab6d06231\
