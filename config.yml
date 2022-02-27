@@ -1,0 +1,9 @@
+tunnel: 896325bb-a683-4bf4-9b7b-ba7ab6d06231
+credentials-file: /home/art/.cloudflared/896325bb-a683-4bf4-9b7b-ba7ab6d06231.json
+
+ingress:
+  - hostname: artemio.tk
+    service: http://localhost:8080
+  - hostname: ssh.artemio.tk
+    service: ssh://localhost:22
+  - service: http_status:404
