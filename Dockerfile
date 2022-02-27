@@ -6,8 +6,8 @@ RUN chmod u+x cloudflared
 #ADD cert.pem /root/.cloudflare/cert.pem
 RUN mv ./cloudflared /usr/bin/cloudflared
 RUN cloudflared login
-RUN cloudflared tunnel delete docker
-RUN cloudflared tunnel create docker
+RUN cloudflared tunnel delete www
+RUN cloudflared tunnel create www
 RUN touch /root/.cloudflared/config.yml
 ADD config.yml /root/.cloudflared/config.yml
-RUN cloudflared tunnel route dns -f docker docker
+RUN cloudflared tunnel route dns -f www www
