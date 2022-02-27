@@ -9,7 +9,7 @@ docker build -t art/cloudflared .
 
 Run:
 
-docker run -it -d --name cloudflared_2 art/cloudflared
+docker run -it -d --restart unless-stopped --name cloudflared_2 art/cloudflared
 
 
 Exec:
