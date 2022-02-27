@@ -18,4 +18,4 @@ ingress:\
   - hostname: ssh.artemio.tk\
     service: ssh://localhost:22\
   - service: http_status:404" > /root/.cloudflared/config.yml
-RUN cloudflared tunnel route dns -f docker docker
+#RUN cloudflared tunnel route dns -f docker docker
