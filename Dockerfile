@@ -9,13 +9,5 @@ RUN cloudflared login
 RUN cloudflared tunnel delete docker
 RUN cloudflared tunnel create docker
 RUN touch /root/.cloudflared/config.yml
-RUN echo "tunnel: 896325bb-a683-4bf4-9b7b-ba7ab6d06231\n\
-credentials-file: /home/art/.cloudflared/896325bb-a683-4bf4-9b7b-ba7ab6d06231.json\n\
-\n\
-ingress:\n\
-  - hostname: artemio.tk\n\
-    service: http://localhost:8080\n\
-  - hostname: ssh.artemio.tk\n\
-    service: ssh://localhost:22\n\
-  - service: http_status:404" > /root/.cloudflared/config.yml
+ADD config.yml /root/.cloudflared/config.yml
 RUN cloudflared tunnel route dns -f docker docker
