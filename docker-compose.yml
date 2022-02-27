@@ -2,8 +2,30 @@ version: "0.1"  # optional since v1.27.0
 services:
   cloudflared:
     container_name: cloudflared
-    image: artemiop/cloudflaredarm
-    ports: 8080:80
+    build: . 
+    networks:
+      static-network:
+        ipv4_address: 172.20.128.1
+        ports:
+          - "172.20.128.1:80:172.20.128.2:80"
+
+  nginx:
+    image: nginx
+    container_name: nginx-container
+    networks:
+      static-network:
+        ipv4_address: 172.20.128.2
+        ports:
+          - "80:80"
+
+networks:
+  static-network:
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+          #docker-compose v3+ do not use ip_range
+          ip_range: 172.28.5.0/24
+
 #  web:
 #    build: .
 #    ports:
