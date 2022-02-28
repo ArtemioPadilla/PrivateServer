@@ -11,4 +11,4 @@ RUN cloudflared tunnel create docker
 RUN touch /root/.cloudflared/config.yml
 ADD config.yml /root/.cloudflared/config.yml
 RUN cloudflared tunnel route dns -f docker docker
-CMD cloudflared tunnel run docker
+#CMD cloudflared tunnel run docker
