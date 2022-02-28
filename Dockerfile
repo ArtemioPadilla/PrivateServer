@@ -12,6 +12,7 @@ RUN cloudflared tunnel create docker
 RUN mkdir root/.aux
 RUN cd root/.aux
 RUN cp -a /root/.cloudflared/. /root/.aux
+RUN rm cert.pem
 
 ADD config.yml /root/.cloudflared/config.yml
 RUN FILE="$(echo *)"
