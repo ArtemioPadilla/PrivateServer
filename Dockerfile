@@ -21,6 +21,10 @@ RUN echo $(cat FILE.txt) | cut -d'.' -f1 > NAME.txt
 
 RUN sed -i -e "1 i tunnel: $(cat /root/.aux/NAME.txt)" /root/.cloudflared/config.yml
 RUN sed -i -e "2 i credentials-file: /root/.cloudflared/$(cat /root/.aux/FILE.txt)" /root/.cloudflared/config.yml
+
+WORKDIR "/"
+RUN rm -r root/.aux
+
 RUN cloudflared tunnel route dns -f docker docker
 
 CMD cloudflared tunnel run docker
