@@ -9,7 +9,7 @@ docker build -t cloudflared .
 
 Run:
 
-docker run -it -d --name cloudfared cloudflared
+docker run -it -d --name cloudflared cloudflared
 
 
 Exec:
