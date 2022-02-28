@@ -1,0 +1,45 @@
+services:
+  cloudflared:
+    container_name: cloudflared
+    build: . 
+    networks:
+      static-network:
+        ipv4_address: 172.20.128.2
+#    network_mode: "bridge"
+
+  web:
+    image: nginx
+    container_name: nginx-container
+	    networks:
+      static-network:
+        ipv4_address: 172.20.128.3
+#    network_mode: "bridge"
+#    ports:
+#      - "80:80"
+
+#networks:                                                                                                                                                                                                                                                                      
+#  bridge:                                                                                                                                                                                                                                                                      
+#    external: true
+
+networks:
+  static-network:
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+        - gateway: 172.20.128.1
+          #docker-compose v3+ do not use ip_range
+#          ip_range: 172.28.5.0/24
+
+#  web:
+#    build: .
+#    ports:
+#      - "8000:5000"
+#    volumes:
+#      - .:/code
+#      - logvolume01:/var/log
+#    links:
+#      - redis
+#  redis:
+#    image: redis
+#volumes:
+#  logvolume01#: {}

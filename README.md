@@ -4,12 +4,12 @@
 
 Build:
 
-docker build -t art/cloudflared .
+docker build -t cloudflared .
 
 
 Run:
 
-|
+docker run -it -d --name cloudflared cloudflared
 
 
 Exec:
