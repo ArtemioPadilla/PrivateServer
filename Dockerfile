@@ -12,16 +12,20 @@ RUN mv ./cloudflared /usr/bin/cloudflared
 RUN cloudflared login 
 RUN cloudflared tunnel create docker
 
-# Setup according to certificate obtained at login
+
+# Save certificate info
 RUN mkdir root/.aux
 WORKDIR "root/.aux"
 RUN cp -a /root/.cloudflared/. /root/.aux
 RUN rm cert.pem
-# Save certificate info
+ADD config.yml /root/.cloudflared/config.yml
 RUN echo * > FILE.txt
 RUN echo $(cat FILE.txt) | cut -d'.' -f1 > NAME.txt
 
-# Config tunnel accordingly
+# Initilize tunnel setup with config file
+ADD config.yml /root/.cloudflared/config.yml
+
+# Setup according to certificate information
 RUN sed -i -e "1 i tunnel: $(cat /root/.aux/NAME.txt)" /root/.cloudflared/config.yml
 RUN sed -i -e "2 i credentials-file: /root/.cloudflared/$(cat /root/.aux/FILE.txt)" /root/.cloudflared/config.yml
 
