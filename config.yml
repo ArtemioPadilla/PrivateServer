@@ -1,5 +1,5 @@
 tunnel: 896325bb-a683-4bf4-9b7b-ba7ab6d06231
-credentials-file: /home/art/.cloudflared/896325bb-a683-4bf4-9b7b-ba7ab6d06231.json
+credentials-file: /root/.cloudflared/896325bb-a683-4bf4-9b7b-ba7ab6d06231.json
 
 ingress:
   - hostname: artemio.tk
