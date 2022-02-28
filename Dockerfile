@@ -9,10 +9,11 @@ RUN cloudflared login
 RUN cloudflared tunnel delete docker
 RUN cloudflared tunnel create docker
 
-RUN cp -a /root/.cloudflared/. /root/.cloudflared/aux
-ADD config.yml /root/.cloudflared/config.yml
+RUN mkdir root/.aux
+RUN cd root/.aux
+RUN cp -a /root/.cloudflared/. /root/.aux
 
-RUN cd root/.cloudflared/aux
+ADD config.yml /root/.cloudflared/config.yml
 RUN FILE="$(echo *)"
 RUN NAME="$(echo $FILE | cut -d'.' -f1)"
 RUN sed -i -e "1 i tunnel: $NAME" /root/.cloudflared/config.yml
