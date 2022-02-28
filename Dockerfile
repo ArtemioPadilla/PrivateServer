@@ -4,8 +4,6 @@ RUN wget https://github.com/cloudflare/cloudflared/releases/latest/download/clou
 RUN mv cloudflared-linux-arm64 cloudflared
 RUN chmod u+x cloudflared
 
-ADD cert.pem /root/.cloudflare/cert.pem
-
 RUN mv ./cloudflared /usr/bin/cloudflared
 RUN cloudflared login
 RUN cloudflared tunnel delete docker
@@ -17,12 +15,12 @@ RUN cp -a /root/.cloudflared/. /root/.aux
 RUN rm cert.pem
 
 ADD config.yml /root/.cloudflared/config.yml
-RUN FILE="$(echo *)"
-RUN echo *
-RUN NAME="$(echo $FILE | cut -d'.' -f1)"
-RUN sed -i -e "1 i tunnel: $NAME" /root/.cloudflared/config.yml
-RUN sed -i -e "2 i credentials-file: /root/.cloudflared/$FILE" /root/.cloudflared/config.yml
-RUN cat root/.cloudflared/config.yml
+RUN echo * > FILE.txt
+RUN echo $(cat FILE.txt) | cut -d'.' -f1 > NAME.txt
+
+
+RUN sed -i -e "1 i tunnel: $(cat /root/.aux/NAME.txt)" /root/.cloudflared/config.yml
+RUN sed -i -e "2 i credentials-file: /root/.cloudflared/$(cat /root/.aux/FILE.txt)" /root/.cloudflared/config.yml
 RUN cloudflared tunnel route dns -f docker docker
 
 CMD cloudflared tunnel run docker
