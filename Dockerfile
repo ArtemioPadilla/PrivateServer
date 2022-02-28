@@ -1,4 +1,5 @@
-FROM ubuntu #OS
+# OS
+FROM ubuntu 
 RUN apt-get update && apt-get install wget -y && apt-get install sudo
 
 # Cloudflare install
@@ -8,8 +9,7 @@ RUN chmod u+x cloudflared
 RUN mv ./cloudflared /usr/bin/cloudflared
 
 # Initialize Cloudflare
-RUN cloudflared login
-RUN cloudflared tunnel delete docker
+RUN cloudflared login 
 RUN cloudflared tunnel create docker
 
 # Setup according to certificate obtained at login
