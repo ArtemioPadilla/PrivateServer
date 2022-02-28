@@ -4,13 +4,14 @@
 ingress:
   - hostname: artemio.tk
     service: http://web:80
-<<<<<<< HEAD
+
   - hostname: ssh.artemio.tk
     service: ssh://172.20.128.1:22
-=======
+
   - hostname: www.artemio.tk
     service: http://web:80
+
   - hostname: ssh.artemio.tk
     service: ssh://127.20.128.1:22
->>>>>>> 78cfa4241f1fd3468f47c2d7ef033710e16397d1
+
   - service: http_status:404
