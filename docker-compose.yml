@@ -1,26 +1,28 @@
-#version: "1.1"  # optional since v1.27.0
 services:
   cloudflared:
     container_name: cloudflared
     build: . 
     networks:
       static-network:
-        ipv4_address: 172.20.128.1
+        ipv4_address: 172.20.128.2
 
   web:
     image: nginx
     container_name: nginx-container
     networks:
       static-network:
-        ipv4_address: 172.20.128.2
+        ipv4_address: 172.20.128.3
+    ports:
+      - "80:80"
+
 
 networks:
   static-network:
     ipam:
       config:
         - subnet: 172.20.0.0/16
-          #docker-compose v3+ do not use ip_range
           ip_range: 172.28.5.0/24
+          gateway: 172.20.128.1
 
 #  web:
 #    build: .
