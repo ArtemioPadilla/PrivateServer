@@ -5,6 +5,7 @@ services:
     networks:
       static-network:
         ipv4_address: 172.20.128.2
+    restart: unless-stopped
 
   web:
     image: nginx
@@ -14,7 +15,7 @@ services:
         ipv4_address: 172.20.128.3
     ports:
       - "80:80"
-
+    restart: unless-stopped
 
 networks:
   static-network:
