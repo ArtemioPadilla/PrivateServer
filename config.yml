@@ -3,7 +3,7 @@ credentials-file: /home/art/.cloudflared/896325bb-a683-4bf4-9b7b-ba7ab6d06231.js
 
 ingress:
   - hostname: artemio.tk
-    service: web:80
+    service: http://web:80
   - hostname: ssh.artemio.tk
     service: ssh://localhost:22
   - service: http_status:404
