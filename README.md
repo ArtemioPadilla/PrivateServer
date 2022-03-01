@@ -4,22 +4,22 @@
 
 To Build:
 
-`docker build -t cloudflared .`
+          docker build -t cloudflared .
 
 
 To Run:
 
-`docker run -it -d --name cloudflared cloudflared`
+          docker run -it -d --name cloudflared cloudflared
 
 
 To Exec:
 
-`docker exec -it cloudflared bash`
+          docker exec -it cloudflared bash
 
 
 ### To Run Docker Compose
 
-`docker-compose up --build`
+          docker-compose up --build
 
 
 ## Containers:
@@ -41,6 +41,12 @@ _Hostname:_ web
 _Purpose:_ To host a website on port 80
 
 _Mount:_ ?
+
+### SSH Host
+
+_Hostname:_ __???__
+
+_Purpose:_ To host SSH connections to the host machine and to other capable containers.
 
 
 ## Networks
