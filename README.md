@@ -1,4 +1,24 @@
 # PrivateServer
+
+## Setup
+
+- Ensamblar RPI
+- Descargar RPI Imager
+- FLashear RPI e Iniciar
+- Activar SSH (Secure Shell)  Configureacion  Interfaces -SSH
+- Configurar IP fija
+    www.makeuseof.com/raspberry-pi-set-static-ip
+- acceder a la IP del RPI
+    ssh pi@192.168.0.19 
+- Instalar Docker
+    https://docs.docker.com/engine/install/debian/#install-using-the-convenience-script
+- Hacer cuenta de CloudFlare
+https://dash.cloudflare.com/sign-up
+- Conseguir dominio gratis
+    https://my.freenom.com/
+- Conectar CloudFlare y dominio
+
+
 ## Run and compilation 
 ### To build from Dockerfile
 
