@@ -60,7 +60,7 @@ _Hostname:_ web
 
 _Purpose:_ To host a website on port 80
 
-_Mount:_ ?
+_Mount:_ /html/
 
 ### SSH Host
 
@@ -84,4 +84,5 @@ Served IPs:
 
 ## Mounts
 
- - web: ?
+### /html/
+_Purpose:_ To store the website files needed for the nginx-container
