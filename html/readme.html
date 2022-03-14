@@ -1,0 +1,39 @@
+<h1 id="privateserver">PrivateServer</h1>
+<h2 id="run-and-compilation">Run and compilation</h2>
+<h3 id="to-build-from-dockerfile">To build from Dockerfile</h3>
+<p>To Build:</p>
+<pre><code>      docker <span class="hljs-keyword">build </span>-t <span class="hljs-keyword">cloudflared </span>.
+</code></pre><p>To Run:</p>
+<pre><code>      docker <span class="hljs-built_in">run</span> -<span class="hljs-keyword">it</span> -d <span class="hljs-comment">--name cloudflared cloudflared</span>
+</code></pre><p>To Exec:</p>
+<pre><code>      docker exec -<span class="hljs-keyword">it</span> cloudflared bash
+</code></pre><h3 id="to-run-docker-compose">To Run Docker Compose</h3>
+<pre><code>      docker-compose up <span class="hljs-comment">--build</span>
+</code></pre><h2 id="containers-">Containers:</h2>
+<h3 id="cloudflared">cloudflared</h3>
+<p><em>Hostname:</em> cloudflared</p>
+<p><em>Purpose:</em> To be the link betweet the internet and the server</p>
+<p><em>Configutarion:</em> The ingress rules for CNAMES and ports is in the <code>config.yml</code></p>
+<h3 id="nginx-container">nginx-container</h3>
+<p><em>Hostname:</em> web</p>
+<p><em>Purpose:</em> To host a website on port 80</p>
+<p><em>Mount:</em> ?</p>
+<h3 id="ssh-host">SSH Host</h3>
+<p><em>Hostname:</em> <strong>???</strong></p>
+<p><em>Purpose:</em> To host SSH connections to the host machine and to other capable containers.</p>
+<h2 id="networks">Networks</h2>
+<h3 id="stable-network">Stable Network</h3>
+<pre><code><span class="hljs-symbol">      subnet:</span> <span class="hljs-number">172.20</span><span class="hljs-meta">.0</span><span class="hljs-meta">.0</span>/<span class="hljs-number">16</span>
+<span class="hljs-symbol">      ip_range:</span> <span class="hljs-number">172.28</span><span class="hljs-meta">.5</span><span class="hljs-meta">.0</span>/<span class="hljs-number">24</span>
+<span class="hljs-symbol">      gateway:</span> <span class="hljs-number">172.20</span><span class="hljs-meta">.128</span><span class="hljs-meta">.1</span>
+</code></pre><p>Served IPs:</p>
+<ul>
+<li>172.20.128.1: Host Machine</li>
+<li>172.20.128.2: cloudflared</li>
+<li>172.20.128.3: web</li>
+<li>172.20.128.4: ?</li>
+</ul>
+<h2 id="mounts">Mounts</h2>
+<ul>
+<li>web: ?</li>
+</ul>
